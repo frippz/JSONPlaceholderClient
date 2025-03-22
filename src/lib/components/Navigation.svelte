@@ -10,6 +10,7 @@
   let navItems: Array<NavItem> = [
     { title: 'Home', url: '/', icon: 'material-symbols-light:garage-home-rounded' },
     { title: 'TODOs', url: '/todos', icon: 'material-symbols-light:fact-check-rounded' },
+    { title: 'Posts', url: '/posts', icon: 'material-symbols-light:article-rounded' },
   ];
 </script>
 
