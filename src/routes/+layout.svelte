@@ -4,6 +4,8 @@
 
   import '../styles/main.css';
 
+  import Navigation from '$lib/components/Navigation.svelte';
+
   interface Props {
     children: Snippet;
   }
@@ -19,6 +21,7 @@
 
 <header>
   <h1>My JSONPlaceholder client</h1>
+  <Navigation />
 </header>
 
 <main>
