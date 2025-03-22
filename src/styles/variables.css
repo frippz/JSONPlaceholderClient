@@ -1,0 +1,118 @@
+/**
+ * Global custom properties
+ */
+
+/**
+ * Global tokens
+ */
+
+:root {
+  --form-border-radius: 5px;
+}
+
+/**
+ * Colors
+ */
+:root {
+  /* Base colors */
+  --base-white: hsl(0deg 100% 100%);
+  --base-black: hsl(0deg 0% 15%);
+
+  /* Brand colors */
+  --brand-color-1: hsl(35 60 76);
+  --brand-color-2: hsl(77 50 75);
+  --brand-color-3: hsl(138 51 63);
+  --brand-color-4: hsl(193 21 57);
+  --brand-color-5: hsl(317 15 41);
+
+  /* Secondary brand colors */
+  --secondary-color-1: hsl(198deg 100% 41%);
+  --secondary-color-2: hsl(192deg 100% 23%);
+  --secondary-color-3: hsl(185deg 47% 41%);
+  --secondary-color-4: hsl(198deg 100% 94%);
+
+  /* Grays */
+  --color-gray-ultralight: hsl(0 0% 95%);
+  --color-gray-light: hsl(0deg 0% 90%);
+  --color-gray-medium: hsl(0deg 0% 70%);
+  --color-gray-dark: hsl(0deg 0% 50%);
+
+  /* Design element colors */
+  --design-element-color-1: hsl(48deg 94% 64%);
+  --design-element-color-2: hsl(18deg 100% 66%);
+  --design-element-color-3: hsl(351deg 100% 66%);
+  --design-element-color-4: hsl(101deg 42% 57%);
+
+  /* Design element colors - 50% */
+  --design-element-color-1-alpha: hsl(48deg 94% 64% / 0.5);
+  --design-element-color-2-alpha: hsl(18deg 100% 66% / 0.5);
+  --design-element-color-3-alpha: hsl(351deg 100% 66% / 0.5);
+  --design-element-color-4-alpha: hsl(101deg 42% 57% / 0.5);
+
+  /* Background colors */
+  --bg-color: var(--base-white);
+  --bg-color-semi: hsl(0deg 100% 100% / 0.5);
+  --bg-color-danger: hsl(0deg 100% 39%);
+
+  /* Text colors */
+  --text-color: var(--base-black);
+  --text-color-inverse: var(--base-white);
+
+  /* Notification colors */
+  --notify-info: hsl(210deg 100% 50%);
+  --notify-warning: hsl(30deg 100% 50%);
+  --notify-error: hsl(0deg 100% 50%);
+  --notify-ok: hsl(120deg 100% 25%);
+
+  /* Invite statuses */
+  --bg-alpha: 0.2;
+
+  --hue-pending: 40deg;
+  --status-pending: hsl(var(--hue-pending) 100% 35%);
+  --status-pending-bg: hsl(55deg 100% 50% / var(--bg-alpha));
+
+  --hue-accepted: 120deg;
+  --status-accepted: hsl(var(--hue-accepted) 100% 30%);
+  --status-accepted-bg: hsl(var(--hue-accepted) 100% 50% / var(--bg-alpha));
+
+  --hue-invalid: 0deg;
+  --status-invalid: hsl(var(--hue-invalid) 100% 30%);
+  --status-invalid-bg: hsl(var(--hue-invalid) 100% 50% / var(--bg-alpha));
+
+  /* Floating cards */
+  --card-border: 1px solid hsl(0 0 0 / 0.1);
+  --card-border-radius: 0.5rem;
+  --card-shadow: 0 0 0.5rem hsl(0 0 0 / 0.1);
+
+  /* Global spacing */
+  --landmark-padding-block: 1rem;
+  --landmark-padding-inline: 2rem;
+
+  /* Animation properties */
+  --header-timing: 400ms;
+
+  /* Tag Badges */
+  --tag-badge-color-1: hsla(198, 100%, 41%, 0.5);
+  --tag-badge-color-2: hsl(101deg 42% 57%);
+  --tag-badge-color-3: hsl(185deg 47% 41%);
+  --tag-badge-color-4: hsl(351deg 100% 66%);
+
+  /* z-index layers */
+  --z-search: 200;
+  --z-header: 500;
+  --z-toast: 700;
+  --z-loading: 800;
+  --z-critical: 9999;
+}
+
+/* TODO: re-enable dark mode later (s/xprefers/prefers) */
+@media only screen and (xprefers-color-scheme: dark) {
+  :root {
+    /* Background colors */
+    --bg-color: var(--base-black);
+
+    /* Text colors */
+    --text-color: var(--base-white);
+    --text-color-inverse: var(--base-black);
+  }
+}

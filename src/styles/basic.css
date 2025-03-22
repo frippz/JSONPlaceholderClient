@@ -1,0 +1,240 @@
+/**
+ * Basic resets
+ */
+
+@media all {
+  /**
+   * Reset body & html spacing
+   */
+  body,
+  html {
+    padding: 0;
+    margin: 0;
+  }
+
+  /**
+   * Apply consistent vertical spacing between adjacent elements
+   */
+  * + * {
+    margin-block-start: 1.75em;
+  }
+
+  /**
+   * Reset box sizing
+   */
+  html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  /**
+   * Tables
+   */
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  table,
+  th,
+  td {
+    border: 0;
+  }
+
+  th,
+  td {
+    padding: 0.25em;
+    vertical-align: top;
+  }
+
+  caption,
+  th {
+    font-weight: bold;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  /**
+   * Body styling
+   */
+  html,
+  body {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+  }
+
+  /**
+   * Fonts & sizes
+   * Base size set to 16px
+   */
+  html {
+    font-size: 100%;
+    font-family:
+      system-ui,
+      -apple-system;
+    font-weight: 400;
+    line-height: 1.5;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    font-size: 1em;
+  }
+
+  code,
+  kbd,
+  pre {
+    font-family: Menlo, Courier, "Courier New", monospace;
+  }
+
+  /**
+   * Headings
+   */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 2em 0 1em;
+    font-weight: 400;
+    line-height: 1.125;
+  }
+
+  h1:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  h5:first-child,
+  h6:first-child,
+  h1 + *,
+  h2 + *,
+  h3 + *,
+  h4 + *,
+  h5 + *,
+  h6 + * {
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.55em;
+  }
+
+  h3 {
+    font-size: 1.3em;
+  }
+
+  h4 {
+    font-size: 1.1em;
+  }
+
+  h5,
+  h6 {
+    font-size: 1em;
+  }
+
+  /**
+   * Paragraphs
+   */
+  p + p {
+    margin-block-start: 0.75em;
+  }
+
+  /**
+   * Lists
+   */
+  ul,
+  ol {
+    margin-inline-start: 2em;
+  }
+
+  li + li {
+    margin-block-start: 0.5em;
+  }
+
+  /**
+   * Generic styled lists
+   */
+  ul[class],
+  ol[class] {
+    list-style: none;
+    margin-inline-start: 0;
+    padding-inline-start: 0;
+  }
+
+  /**
+   *Links
+   */
+  a,
+  a:visited {
+    color: inherit;
+  }
+
+  a:hover,
+  a:focus,
+  a:active {
+    color: inherit;
+  }
+
+  /**
+   * Images
+   */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /**
+   * Emphasis
+   */
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  i,
+  em {
+    font-style: italic;
+  }
+
+  /**
+   * Hidden elements (both visually and for AT:s)
+   */
+  [hidden] {
+    display: none;
+  }
+
+  /**
+   * Visually hidden (still visible to AT:s)
+   */
+  .at-only {
+    position: absolute;
+    top: auto;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  /**
+   * Preformatted
+   */
+  pre {
+    background-color: hsl(60deg 100% 50% / 10%); /* TODO Global color variable */
+    padding: 0.5em;
+    overflow-y: scroll;
+  }
+}
