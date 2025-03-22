@@ -1,6 +1,2 @@
-<script lang="ts">
-  import TodoList from '$lib/components/TodoList.svelte';
-</script>
-
-<h2>TODO list</h2>
-<TodoList />
+<h2>Start</h2>
+<p>Just me playing around with JSON APIs. 😇</p>
