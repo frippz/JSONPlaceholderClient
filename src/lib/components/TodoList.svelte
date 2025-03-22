@@ -1,24 +1,25 @@
 <script lang="ts">
-  import Icon from '@iconify/svelte';
-  import { getTodos } from '$lib/api/todos';
+  import type { PageProps } from '../../routes/todos/$types';
 
-  let fetchTodos = getTodos();
+  import Icon from '@iconify/svelte';
+
+  let { data }: PageProps = $props();
+
+  let todos = data.todos;
 </script>
 
-{#await fetchTodos then todos}
-  <ul class="todos">
-    {#each todos as { userId, id, title, completed }}
-      <li data-userid={userId} id={`todo-${id}`}>
-        {#if completed}
-          <Icon icon="material-symbols-light:check-box" width={24} />
-        {:else}
-          <Icon icon="material-symbols-light:check-box-outline-blank" width={24} />
-        {/if}
-        {title}
-      </li>
-    {/each}
-  </ul>
-{/await}
+<ul class="todos">
+  {#each todos as { userId, id, title, completed }}
+    <li data-userid={userId} id={`todo-${id}`}>
+      {#if completed}
+        <Icon icon="material-symbols-light:check-box" width={24} />
+      {:else}
+        <Icon icon="material-symbols-light:check-box-outline-blank" width={24} />
+      {/if}
+      {title}
+    </li>
+  {/each}
+</ul>
 
 <style>
   .todos li {
