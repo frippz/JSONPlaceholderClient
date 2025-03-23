@@ -3,7 +3,7 @@ import type { PostItem } from '$types/posts';
 import { api } from './client';
 
 const endPoints = {
-  posts: () => `posts`,
+  posts: 'posts',
   postItem: (postItem: number) => `${endPoints.posts}/${postItem}`,
 };
 
@@ -12,7 +12,7 @@ const endPoints = {
  * @returns Promise containing the posts array
  */
 export function getPosts(): Promise<Array<PostItem>> {
-  return api.get(endPoints.posts()).json();
+  return api.get(endPoints.posts).json();
 }
 
 /**
