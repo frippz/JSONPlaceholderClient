@@ -23,6 +23,10 @@
 </ul>
 
 <style>
+  .posts {
+    max-width: var(--content-max-width);
+  }
+
   li {
     border-radius: var(--form-border-radius);
     border: 1px solid var(--text-color);

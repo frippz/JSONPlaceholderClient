@@ -8,6 +8,7 @@
 
 :root {
   --form-border-radius: 5px;
+  --content-max-width: 72ch;
 }
 
 /**

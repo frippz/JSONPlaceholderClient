@@ -15,6 +15,6 @@
 
 <style>
   article {
-    max-width: 32ch;
+    max-width: var(--content-max-width);
   }
 </style>
