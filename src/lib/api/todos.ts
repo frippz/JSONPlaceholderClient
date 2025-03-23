@@ -8,8 +8,7 @@ const endPoints = {
 };
 
 /**
- * Retrieve a single TODO item
- * @param todoItem The unique identifier of the TODO
+ * Retrieve all TODOs
  * @returns Promise containing the TODOs array
  */
 export function getTodos(): Promise<Array<TodoItem>> {
