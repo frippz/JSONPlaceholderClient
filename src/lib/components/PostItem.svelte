@@ -13,4 +13,8 @@
   <p>{postItem.body}</p>
 </article>
 
-<style></style>
+<style>
+  article {
+    max-width: var(--content-max-width);
+  }
+</style>
