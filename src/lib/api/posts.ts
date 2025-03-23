@@ -9,7 +9,7 @@ const endPoints = {
 
 /**
  * Retrieve a list of posts
- * @returns Promise containing the TODOs array
+ * @returns Promise containing the posts array
  */
 export function getPosts(): Promise<Array<PostItem>> {
   return api.get(endPoints.posts()).json();
@@ -17,9 +17,9 @@ export function getPosts(): Promise<Array<PostItem>> {
 
 /**
  * Retrieve a single post
- * @param todoItem The unique identifier of the TODO
- * @returns Promise containing the TODOs array
+ * @param postItem The unique identifier of the post
+ * @returns Promise containing the postItem data
  */
-export function getPostItem(todoItem: number): Promise<PostItem> {
-  return api.get(endPoints.postItem(todoItem)).json();
+export function getPostItem(postItem: number): Promise<PostItem> {
+  return api.get(endPoints.postItem(postItem)).json();
 }

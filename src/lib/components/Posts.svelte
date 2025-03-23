@@ -11,8 +11,12 @@
 
 <ul class="posts">
   {#each posts as { id, title, body }}
-    <li id={`post-${id}`}>
-      <h2><Icon icon="material-symbols-light:article-rounded" />{title}</h2>
+    <li id="post-{id}">
+      <h2>
+        <a href="/posts/{id}">
+          <Icon icon="material-symbols-light:article-rounded" />{title}
+        </a>
+      </h2>
       <p>{body}</p>
     </li>
   {/each}
