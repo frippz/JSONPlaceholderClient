@@ -10,7 +10,7 @@
 </script>
 
 <ul class="posts">
-  {#each posts as { id, title, body }}
+  {#each posts as { id, title, body } (id)}
     <li id="post-{id}">
       <h2>
         <a href="/posts/{id}">

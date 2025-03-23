@@ -10,7 +10,7 @@
 
 <ul class="todos">
   {#each todos as { userId, id, title, completed } (id)}
-    <li data-userid={userId} id={`todo-${id}`}>
+    <li data-userid={userId} id="todo-${id}">
       {#if completed}
         <Icon icon="material-symbols-light:check-box" width={24} />
       {:else}
