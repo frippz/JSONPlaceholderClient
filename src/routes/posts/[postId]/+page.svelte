@@ -2,6 +2,9 @@
   import PostItem from '$lib/components/PostItem.svelte';
 
   let { data } = $props();
+
+  let postItem = data.postItem;
+  let postItemComments = data.postItemComments;
 </script>
 
-<PostItem postItem={data.postItem} />
+<PostItem {postItem} {postItemComments} />
