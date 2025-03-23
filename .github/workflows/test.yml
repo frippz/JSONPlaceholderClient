@@ -27,7 +27,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Set up environment
-        run: cp ./environments/test/test.one-ami.net.env .env
+        run: cp ./.env.example .env
 
       - name: Install Node packages
         run: npm ci --ignore-scripts
