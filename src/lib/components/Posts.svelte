@@ -1,13 +1,17 @@
 <script lang="ts">
+  import type { PostItem } from '$types/posts';
   import Icon from '@iconify/svelte';
-  import type { PageProps } from '../../routes/posts/$types';
 
-  let { data }: PageProps = $props();
+  interface Props {
+    posts: Array<PostItem>;
+  }
+
+  let { posts }: Props = $props();
 </script>
 
 <ul class="posts">
-  {#each data.posts as { id, title, body }}
-    <li class="post__item" id={`post-${id}`}>
+  {#each posts as { id, title, body }}
+    <li id={`post-${id}`}>
       <h2><Icon icon="material-symbols-light:article-rounded" />{title}</h2>
       <p>{body}</p>
     </li>

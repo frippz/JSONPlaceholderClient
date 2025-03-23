@@ -1,5 +1,6 @@
-import ky from 'ky';
 import { apiBaseUrl } from '$lib/config';
+
+import ky from 'ky';
 
 /**
  * Set up the API call
