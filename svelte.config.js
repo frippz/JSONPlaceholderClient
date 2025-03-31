@@ -10,15 +10,8 @@ const config = {
       $styles: 'src/styles',
       $types: 'src/types',
     },
+
     adapter: adapter(),
-    csp: {
-      directives: {
-        'script-src': ['self'],
-      },
-      reportOnly: {
-        'script-src': ['self'],
-      },
-    },
   },
 };
 
