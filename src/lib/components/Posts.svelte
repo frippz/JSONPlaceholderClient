@@ -1,6 +1,19 @@
+<!-- 
+@component 
+Lists all blog posts in an unordered list
+
+@props {posts} array of PostItem
+
+Usage:
+```html
+<Posts posts={myPostsArray} />
+```
+-->
+
 <script lang="ts">
   import type { PostItem } from '$types/posts';
   import Icon from '@iconify/svelte';
+  import snarkdown from 'snarkdown';
 
   interface Props {
     posts: Array<PostItem>;
@@ -14,10 +27,11 @@
     <li id="post-{id}">
       <h2>
         <a href="/posts/{id}">
-          <Icon icon="material-symbols-light:article-rounded" />{title}
+          <Icon icon="material-symbols-light:article-rounded" />
+          {title}
         </a>
       </h2>
-      <p>{body}</p>
+      {@html snarkdown(body)}
     </li>
   {/each}
 </ul>

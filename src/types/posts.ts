@@ -1,8 +1,9 @@
 export interface PostItem {
-  userId: number;
+  body: string;
+  createdAt: string;
   id: number;
   title: string;
-  body: string;
+  userId: string;
 }
 
 export interface PostItemComment {
