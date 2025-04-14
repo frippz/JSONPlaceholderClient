@@ -4,7 +4,7 @@
   let { data } = $props();
 
   let postItem = data.postItem;
-  let postItemComments = data.postItemComments;
+  // let postItemComments = data.postItemComments;
 </script>
 
-<PostItem {postItem} {postItemComments} />
+<PostItem {postItem} />

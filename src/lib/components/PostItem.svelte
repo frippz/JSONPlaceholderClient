@@ -1,19 +1,21 @@
 <script lang="ts">
-  import type { PostItem, PostItemComment } from '$types/posts';
-  import Icon from '@iconify/svelte';
+  import type { PostItem /* PostItemComment  */ } from '$types/posts';
+  import snarkdown from 'snarkdown';
+  // import Icon from '@iconify/svelte';
 
   interface Props {
     postItem: PostItem;
-    postItemComments: Array<PostItemComment>;
+    // postItemComments: Array<PostItemComment>;
   }
 
-  let { postItem, postItemComments }: Props = $props();
+  let { postItem /* postItemComments  */ }: Props = $props();
 </script>
 
 <article>
   <h2>{postItem.title}</h2>
-  <p>{postItem.body}</p>
+  {@html snarkdown(postItem.body)}
 
+  <!--
   <h3>Comments</h3>
   <ul class="comments">
     {#each postItemComments as { id, name, email, body } (id)}
@@ -28,6 +30,7 @@
       </li>
     {/each}
   </ul>
+  -->
 </article>
 
 <style>
@@ -35,6 +38,7 @@
     max-width: var(--content-max-width);
   }
 
+  /*
   .comments {
     li {
       border-radius: var(--form-border-radius);
@@ -52,4 +56,5 @@
       align-items: center;
     }
   }
+  */
 </style>
