@@ -23,7 +23,7 @@
     "eslint-plugin-svelte": "3.5.1",
     "globals": "16.0.0",
     "husky": "8.0.3",
-    "ky": "1.8.0",
+    "ky": "1.8.1",
     "prettier": "3.5.3",
     "prettier-plugin-svelte": "3.3.3",
     "snarkdown": "2.0.0",
