@@ -1,28 +1,26 @@
 <script lang="ts">
   import type { PageProps } from '../../routes/todos/$types';
 
-  import Icon from '@iconify/svelte';
-
   let { data }: PageProps = $props();
 
-  let todos = data.todos;
+  let todosList = data.todos;
 </script>
 
-<ul class="todos">
-  {#each todos as { userId, id, title, completed } (id)}
-    <li data-userid={userId} id="todo-${id}">
-      {#if completed}
-        <Icon icon="material-symbols-light:check-box" width={24} />
-      {:else}
-        <Icon icon="material-symbols-light:check-box-outline-blank" width={24} />
-      {/if}
-      {title}
-    </li>
-  {/each}
-</ul>
+{#if todosList}
+  <ul class="todos">
+    {#each todosList as { id, task, completed } (id)}
+      <li id="todo-${id}">
+        <label>
+          <input type="checkbox" checked={completed} />
+          {task}
+        </label>
+      </li>
+    {/each}
+  </ul>
+{/if}
 
 <style>
-  .todos li {
+  .todos label {
     display: flex;
     gap: 0.5rem;
     align-items: center;
