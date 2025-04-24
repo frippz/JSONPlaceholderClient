@@ -3,3 +3,8 @@ export interface TodoItem {
   task: string;
   completed: boolean;
 }
+
+export interface TodoItemUpdate {
+  task?: string;
+  completed?: boolean;
+}
