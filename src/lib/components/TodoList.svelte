@@ -1,28 +1,54 @@
 <script lang="ts">
+  import type { TodoItem, TodoItemUpdate } from '$types/todos';
   import type { PageProps } from '../../routes/todos/$types';
 
-  import Icon from '@iconify/svelte';
+  import { browser } from '$app/environment';
+  import { updateTodo } from '$lib/api/todos';
 
   let { data }: PageProps = $props();
 
-  let todos = data.todos;
+  let todosList = data.todos;
+
+  async function completeToggle(event: Event, id: TodoItem['id']) {
+    const checkbox = event.target as HTMLInputElement;
+    const payload: TodoItemUpdate = {
+      completed: checkbox.checked,
+    };
+    try {
+      console.log({ id, payload });
+      await updateTodo(id, payload);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 </script>
 
-<ul class="todos">
-  {#each todos as { userId, id, title, completed } (id)}
-    <li data-userid={userId} id="todo-${id}">
-      {#if completed}
-        <Icon icon="material-symbols-light:check-box" width={24} />
-      {:else}
-        <Icon icon="material-symbols-light:check-box-outline-blank" width={24} />
-      {/if}
-      {title}
-    </li>
-  {/each}
-</ul>
+{#if todosList}
+  <form method="POST" action="?/completeTodo">
+    <ul class="todos">
+      {#each todosList as { id, task, completed } (id)}
+        <li id="todo-${id}">
+          <input type="hidden" name="id" value={id} />
+          <label>
+            <input
+              type="checkbox"
+              name={task}
+              checked={completed}
+              onchange={(e) => completeToggle(e, id)}
+            />
+            {task}
+          </label>
+        </li>
+      {/each}
+    </ul>
+    {#if !browser}
+      <button>Save</button>
+    {/if}
+  </form>
+{/if}
 
 <style>
-  .todos li {
+  .todos label {
     display: flex;
     gap: 0.5rem;
     align-items: center;
