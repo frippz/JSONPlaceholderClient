@@ -1,7 +1,8 @@
 import type { Actions, PageServerLoad } from './$types';
 import { getTodos /* updateTodoBatch */ } from '$lib/api/todos';
 
-export const load: PageServerLoad = async () => {
+export const load: PageServerLoad = async ({ depends }) => {
+  depends('app:todos');
   return {
     todos: await getTodos(),
   };

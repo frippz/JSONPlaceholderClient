@@ -26,6 +26,15 @@ export function getTodoItem(todoItem: number): Promise<TodoItem> {
 }
 
 /**
+ * Delete a single TODO item
+ * @param todoItem The unique identifier of the TODO
+ * @returns Promise resolving to a …?
+ */
+export function deleteTodoItem(todoItem: number): Promise<TodoItem> {
+  return api.delete(endPoints.todoItem(todoItem)).json();
+}
+
+/**
  * Update a single TODO item
  * @param todoItem The unique identifier of the TODO
  * @returns Promise containing the TODOs array
