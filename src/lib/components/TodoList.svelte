@@ -81,10 +81,10 @@
       padding-inline: 0.7rem;
       padding-block: 0.25rem;
       border-radius: 0.25rem;
-      background-color: hsl(0 0 100 / 0.05);
+      background-color: light-dark(hsl(0 0 0 / 0.05), hsl(0 0 100 / 0.05));
 
       &:hover {
-        background-color: hsl(0 0 100 / 0.1);
+        background-color: light-dark(hsl(0 0 0 / 0.1), hsl(0 0 100 / 0.1));
       }
 
       & + & {
