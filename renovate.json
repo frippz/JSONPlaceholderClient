@@ -1,7 +1,6 @@
 {
   "rangeStrategy": "pin",
   "extends": ["config:recommended", "schedule:weekdays"],
-  "timezone": "CET",
   "nvm": {
     "enabled": false
   },
