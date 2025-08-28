@@ -3,14 +3,27 @@
   import type { PageProps } from '../../routes/todos/$types';
 
   import { browser } from '$app/environment';
-  import { fade } from 'svelte/transition';
-  import { deleteTodoItem, updateTodo } from '$lib/api/todos';
+  import { deleteTodoItem, getTodos, updateTodo } from '$lib/api/todos';
 
+  import TodoListItem from './TodoListItem.svelte';
+  import Loading from './Loading.svelte';
   import Button from './Button.svelte';
 
   let { data }: PageProps = $props();
 
   let todosList = $state(data.todos);
+  let fetchingTodos = $state<boolean>(false);
+  let isEditing = $state<boolean>(false);
+
+  async function refresh() {
+    try {
+      fetchingTodos = true;
+      todosList = await getTodos();
+      fetchingTodos = false;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   async function completeToggle(event: Event, id: TodoItem['id']) {
     const checkbox = event.target as HTMLInputElement;
@@ -33,78 +46,79 @@
       console.error(error);
     }
   }
+
+  async function editTodo(id: TodoItem['id'], task: TodoItem['task']) {
+    try {
+      const taskPayload = {
+        task: task,
+      };
+      await updateTodo(id, taskPayload);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  let buttonIcon = () => {
+    if (fetchingTodos) {
+      return 'line-md:loading-twotone-loop';
+    } else {
+      return 'mdi:database-refresh-outline';
+    }
+  };
 </script>
 
 {#if todosList}
-  <form method="POST" action="?/completeTodo">
-    <ul class="todos">
-      {#each todosList as { id, task, completed } (id)}
-        <li id="todo-${id}" transition:fade>
-          <label>
-            <input
-              type="checkbox"
-              name={task}
-              checked={completed}
-              onchange={(e) => completeToggle(e, id)}
-            />
+  <section class="todos">
+    <header>
+      <h2>TODO list</h2>
+      {#if browser}
+        <Button label="Refresh TODOs" icon={buttonIcon()} size="small" onclick={refresh} />
+      {/if}
+    </header>
+    <form method="POST" action="?/completeTodo">
+      <ul class="todos-list">
+        {#each todosList as { id, task, completed } (id)}
+          <TodoListItem
+            {id}
             {task}
-          </label>
-          <input type="hidden" name="id" value={id} />
-          <Button
-            label="Delete {task}"
-            icon="mdi-delete"
-            iconOnly
-            theme="tertiary"
-            onclick={() => removeTodo(id)}
+            {completed}
+            {completeToggle}
+            {removeTodo}
+            {editTodo}
+            {isEditing}
+            onEditDone={refresh}
           />
-        </li>
-      {/each}
-    </ul>
-    {#if !browser}
-      <button>Save</button>
+        {/each}
+      </ul>
+      {#if !browser}
+        <button>Save</button>
+      {/if}
+    </form>
+    {#if fetchingTodos}
+      <Loading spinner={2} />
     {/if}
-  </form>
+  </section>
 {/if}
 
 <style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    * {
+      margin-block: 0;
+    }
+  }
+
   .todos {
+    max-width: 48ch;
+  }
+
+  .todos-list {
     display: grid;
     justify-items: stretch;
     max-width: 46ch;
     font-size: 1.2em;
-
-    & > * {
-      margin-block-start: 0;
-    }
-
-    li {
-      padding-inline: 0.7rem;
-      padding-block: 0.25rem;
-      border-radius: 0.25rem;
-      background-color: light-dark(hsl(0 0 0 / 0.05), hsl(0 0 100 / 0.05));
-
-      &:hover {
-        background-color: light-dark(hsl(0 0 0 / 0.1), hsl(0 0 100 / 0.1));
-      }
-
-      & + & {
-        margin-block-start: 0.5rem;
-      }
-    }
-
-    label {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 1;
-      cursor: pointer;
-    }
-
-    li {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
   }
 </style>
