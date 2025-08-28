@@ -3,7 +3,6 @@
   import type { PageData } from './$types';
 
   export let data: PageData;
-  let form = null;
 </script>
 
-<TodoList {data} {form} />
+<TodoList {data} />

@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { TodoItem, TodoItemUpdate } from '$types/todos';
-  import type { PageProps } from '../../routes/todos/$types';
 
   import { browser } from '$app/environment';
   import { deleteTodoItem, getTodos, updateTodo } from '$lib/api/todos';
@@ -9,7 +8,7 @@
   import Loading from './Loading.svelte';
   import Button from './Button.svelte';
 
-  let { data }: PageProps = $props();
+  let { data }: { data: { todos: TodoItem[] } } = $props();
 
   let todosList = $state(data.todos);
   let fetchingTodos = $state<boolean>(false);
