@@ -69,9 +69,10 @@
 
   button {
     font: inherit;
-    background-color: var(--primary-brand-color);
-    color: var(--base-white);
+    background-color: var(--brand-color-3);
+    color: currentColor;
     border: 1px solid transparent;
+    border-radius: 0.25em;
     justify-self: end;
     margin-block-start: 0;
     cursor: pointer;

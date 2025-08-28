@@ -5,6 +5,7 @@
   import '../styles/main.css';
 
   import Navigation from '$lib/components/Navigation.svelte';
+  import Dev from '$lib/components/Dev.svelte';
 
   interface Props {
     children: Snippet;
@@ -26,9 +27,24 @@
   {@render children?.()}
 </main>
 
+<footer>
+  <Dev />
+</footer>
+
 <style>
+  :global(body) {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
   header,
-  main {
+  main,
+  footer {
     padding: 1rem;
+  }
+
+  footer {
+    margin-block-start: auto;
   }
 </style>
