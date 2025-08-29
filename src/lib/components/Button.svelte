@@ -37,7 +37,7 @@
   const iconSizeMap: Record<ButtonSize, number> = {
     small: 20,
     medium: 24,
-    large: 24,
+    large: 28,
   };
   let iconSize = $derived(iconSizeMap[size] ?? 24);
 </script>
@@ -120,8 +120,9 @@
 
   /* Sizes */
   .size-small:not(.tertiary) {
-    padding-block: 0.1em;
-    padding-inline: 0.5em;
+    padding-block: 0.2em;
+    padding-inline: 0.75em;
+    font-size: 0.9em;
   }
 
   .size-medium:not(.tertiary) {
@@ -131,5 +132,6 @@
   .size-large:not(.tertiary) {
     padding-block: 0.75em;
     padding-inline: 2em;
+    font-size: 1.1em;
   }
 </style>
