@@ -1,5 +1,6 @@
 <script lang="ts">
   import { siteTitle } from '$lib/config';
+  import { ModeWatcher, toggleMode } from 'mode-watcher';
   import type { Snippet } from 'svelte';
 
   import '../styles/main.css';
@@ -18,9 +19,12 @@
   <title>{siteTitle}</title>
 </svelte:head>
 
+<ModeWatcher />
+
 <header>
   <h1>My JSONPlaceholder client</h1>
   <Navigation />
+  <button onclick={toggleMode}>Toggle Mode</button>
 </header>
 
 <main>
