@@ -1,4 +1,4 @@
-import type { TodoItem, TodoItemUpdate } from '$types/todos';
+import type { TodoItem, TodoItemCreate, TodoItemUpdate } from '$types/todos';
 
 import { api } from './client';
 
@@ -50,4 +50,11 @@ export function updateTodoBatch(
   todos: Array<{ id: number } & TodoItemUpdate>,
 ): Promise<TodoItem[]> {
   return api.put(endPoints.todosBatch(), { json: todos }).json();
+}
+
+/**
+ * Create a single TODO item
+ */
+export function createTodo(payload: TodoItemCreate): Promise<TodoItem> {
+  return api.post(endPoints.todos(), { json: payload }).json();
 }

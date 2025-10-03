@@ -1,12 +1,13 @@
 <script lang="ts">
-  import type { TodoItem, TodoItemUpdate } from '$types/todos';
+  import type { TodoItem, TodoItemUpdate, TodoItemCreate } from '$types/todos';
 
   import { browser } from '$app/environment';
-  import { deleteTodoItem, getTodos, updateTodo } from '$lib/api/todos';
+  import { deleteTodoItem, getTodos, updateTodo, createTodo } from '$lib/api/todos';
 
   import TodoListItem from './TodoListItem.svelte';
   import Loading from './Loading.svelte';
   import Button from './Button.svelte';
+  import Input from './Input.svelte';
 
   let { data }: { data: { todos: TodoItem[] } } = $props();
 
@@ -57,6 +58,23 @@
     }
   }
 
+  let showNewTodoInput = $state(false);
+  let newTodoTask = $state<string>();
+
+  async function addTodoItem(task: TodoItemCreate['task']) {
+    try {
+      const taskPayload = {
+        task: task,
+      };
+      await createTodo(taskPayload);
+      refresh();
+      newTodoTask = '';
+      showNewTodoInput = false;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   let buttonIcon = () => {
     if (fetchingTodos) {
       return 'line-md:loading-twotone-loop';
@@ -88,9 +106,33 @@
             onEditDone={refresh}
           />
         {/each}
+        <li>
+          {#if showNewTodoInput}
+            <Input
+              label="New task"
+              hiddenLabel={true}
+              bind:value={newTodoTask}
+              onkeydown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  addTodoItem(newTodoTask);
+                }
+              }}
+              placeholder="Enter your task"
+            />
+          {:else}
+            <Button
+              label="Add new todo"
+              icon="mdi:pencil-add"
+              size="small"
+              fullWidth={true}
+              onclick={() => (showNewTodoInput = !showNewTodoInput)}
+            />
+          {/if}
+        </li>
       </ul>
       {#if !browser}
-        <button>Save</button>
+        <button type="submit">Save</button>
       {/if}
     </form>
     {#if fetchingTodos}
