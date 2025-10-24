@@ -7,6 +7,7 @@
  */
 
 :root {
+  --form-padding: 0.25em 0.5em;
   --form-border-radius: 5px;
   --content-max-width: 72ch;
 }
@@ -52,6 +53,7 @@
 
   /* Background colors */
   --bg-color: var(--base-white);
+  --bg-color-inverse: var(--base-black);
   --bg-color-semi: hsl(0deg 100% 100% / 0.5);
   --bg-color-danger: hsl(0deg 100% 39%);
 
@@ -110,6 +112,7 @@
   :root {
     /* Background colors */
     --bg-color: var(--base-black);
+    --bg-color-inverse: var(--base-white);
 
     /* Text colors */
     --text-color: var(--base-white);

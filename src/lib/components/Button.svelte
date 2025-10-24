@@ -15,6 +15,7 @@
     iconOnly?: boolean;
     autofocus?: boolean | null;
     isLoading?: boolean;
+    fullWidth?: boolean;
     onclick?: () => void;
   }
 
@@ -27,6 +28,7 @@
     iconOnly = false,
     autofocus = null,
     isLoading = false,
+    fullWidth = false,
     onclick,
   }: Props = $props();
 
@@ -47,7 +49,7 @@
   {type}
   {autofocus}
   {onclick}
-  class="{themeClass} {sizeClass}"
+  class="{themeClass} {sizeClass} {fullWidth ? 'fullwidth' : ''}"
   aria-label={iconOnly ? label : undefined}
 >
   {#if icon}
@@ -70,7 +72,7 @@
   button {
     font: inherit;
     background-color: var(--brand-color-3);
-    color: currentColor;
+    color: var(--text-color-inverse);
     border: 1px solid transparent;
     border-radius: 0.25em;
     justify-self: end;
@@ -87,6 +89,11 @@
 
   button:hover {
     filter: brightness(1.1);
+  }
+
+  .fullwidth {
+    display: flex;
+    width: 100%;
   }
 
   /* Themes */
