@@ -3,7 +3,7 @@ import type { PostItem /* PostItemComment  */ } from '$types/posts';
 import { api } from './client';
 
 const endPoints = {
-  posts: 'posts',
+  posts: 'posts/',
   postItem: (postItem: number) => `${endPoints.posts}/${postItem}`,
   // postItemComments: (postItem: number) => `${endPoints.posts}/${postItem}/comments`,
 };

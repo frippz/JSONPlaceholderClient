@@ -3,7 +3,7 @@ import type { TodoItem, TodoItemCreate, TodoItemUpdate } from '$types/todos';
 import { api } from './client';
 
 const endPoints = {
-  todos: () => `todos`,
+  todos: () => `todos/`,
   todosBatch: () => `todos/batch`,
   todoItem: (todoItem: number) => `todos/${todoItem}`,
 };
