@@ -30,7 +30,7 @@ export default ts.config(
   {
     rules: {
       'svelte/no-at-html-tags': 'off',
-      'svelte/no-navigation-without-resolver': 'off',
+      'svelte/no-navigation-without-resolve': 'off',
     },
   },
   {
