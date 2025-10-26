@@ -1,8 +1,14 @@
+[variables]
+NODE_VERSION = "24.0.0"
+
 [phases.setup]
-nixPkgs = ['nodejs_latest', 'pnpm']
+nixPkgs = ['nodejs_24', 'pnpm']
 
 [phases.install]
-cmds = ['pnpm install --frozen-lockfile --shamefully-hoist --ignore-engines']
+cmds = [
+  'pnpm config set engine-strict false',
+  'pnpm install --frozen-lockfile --shamefully-hoist'
+]
 
 [phases.build]
 cmds = ['pnpm build']
