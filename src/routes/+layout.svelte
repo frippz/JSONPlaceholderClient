@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { siteTitle } from '$lib/config';
+  import { siteTitle, buildTime, version } from '$lib/config';
   import type { Snippet } from 'svelte';
 
   import '../styles/main.css';
@@ -16,6 +16,8 @@
 
 <svelte:head>
   <title>{siteTitle}</title>
+  <meta name="git-version" content={version} />
+  <meta name="build-time" content={buildTime} />
 </svelte:head>
 
 <header>
