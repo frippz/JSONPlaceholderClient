@@ -4,7 +4,7 @@
   import { browser } from '$app/environment';
   import { fade } from 'svelte/transition';
 
-  import Button from './Button.svelte';
+  import Button from '../Button.svelte';
 
   interface Props extends TodoItem {
     completeToggle: (event: Event, id: TodoItem['id']) => void;
