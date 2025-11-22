@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TodoList from '$lib/components/TodoList.svelte';
+  import TodoList from '$lib/components/todos/TodoList.svelte';
   import type { PageData } from './$types';
 
   export let data: PageData;

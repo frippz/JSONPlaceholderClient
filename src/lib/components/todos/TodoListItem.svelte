@@ -4,7 +4,8 @@
   import { browser } from '$app/environment';
   import { fade } from 'svelte/transition';
 
-  import Button from './Button.svelte';
+  import Button from '../Button.svelte';
+  import TodoItemCheckbox from './TodoItemCheckbox.svelte';
 
   interface Props extends TodoItem {
     completeToggle: (event: Event, id: TodoItem['id']) => void;
@@ -43,15 +44,7 @@
 
 <li id="todo-${id}" transition:fade>
   {#if !isEditing}
-    <label>
-      <input
-        type="checkbox"
-        name={task}
-        checked={completed}
-        onchange={(e) => completeToggle(e, id)}
-      />
-      <span>{task}</span>
-    </label>
+    <TodoItemCheckbox {task} {completed} onchange={(e) => completeToggle(e, id)} />
   {:else}
     <input
       type="text"
@@ -75,6 +68,7 @@
 <style>
   li {
     display: flex;
+    gap: 0.25em;
     align-items: center;
     justify-content: space-between;
     padding-inline: 0.7rem;
@@ -89,22 +83,5 @@
 
   li + :global(li) {
     margin-block-start: 0.5rem;
-  }
-
-  label {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: flex-start;
-    flex: 1;
-    cursor: pointer;
-  }
-
-  span {
-    margin-block-start: 0;
-  }
-
-  :checked + span {
-    text-decoration: hsl(0 100 50 / 0.5) line-through 0.2em;
   }
 </style>

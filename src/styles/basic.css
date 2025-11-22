@@ -237,4 +237,9 @@
     padding: 0.5em;
     overflow-y: scroll;
   }
+
+  :focus {
+    outline: 2px solid currentColor;
+    border-radius: 0.2em;
+  }
 }

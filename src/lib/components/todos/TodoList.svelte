@@ -5,9 +5,9 @@
   import { deleteTodoItem, getTodos, updateTodo, createTodo } from '$lib/api/todos';
 
   import TodoListItem from './TodoListItem.svelte';
-  import Loading from './Loading.svelte';
-  import Button from './Button.svelte';
-  import Input from './Input.svelte';
+  import Loading from '../Loading.svelte';
+  import Button from '../Button.svelte';
+  import Input from '../Input.svelte';
 
   let { data }: { data: { todos: TodoItem[] } } = $props();
 
