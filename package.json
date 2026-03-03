@@ -28,7 +28,7 @@
     "husky": "9.1.7",
     "ky": "1.14.3",
     "prettier": "3.8.1",
-    "prettier-plugin-svelte": "3.5.0",
+    "prettier-plugin-svelte": "3.5.1",
     "snarkdown": "2.0.0",
     "svelte": "5.53.6",
     "svelte-check": "4.4.4",
