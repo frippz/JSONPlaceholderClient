@@ -27,7 +27,7 @@
     "globals": "16.5.0",
     "husky": "9.1.7",
     "ky": "1.14.3",
-    "prettier": "3.9.0",
+    "prettier": "3.9.1",
     "prettier-plugin-svelte": "4.1.1",
     "snarkdown": "2.0.0",
     "svelte": "5.56.4",
