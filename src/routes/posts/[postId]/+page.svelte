@@ -1,10 +1,8 @@
 <script lang="ts">
+  import type { PageProps } from './$types';
   import PostItem from '$lib/components/PostItem.svelte';
 
-  let { data } = $props();
-
-  let postItem = data.postItem;
-  // let postItemComments = data.postItemComments;
+  let { data }: PageProps = $props();
 </script>
 
-<PostItem {postItem} />
+<PostItem postItem={data.postItem} />

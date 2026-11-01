@@ -1,14 +1,15 @@
 import type { PageServerLoad } from './$types';
 
-import { getPostItem /* getPostItemComments  */ } from '$lib/api/posts';
+import { error } from '@sveltejs/kit';
+import { getPostItem } from '$lib/api/posts';
 
 export const load: PageServerLoad = async ({ params }) => {
-  const id = parseInt(params.postId, 10);
-  const postItem = await getPostItem(id);
-  // const postItemComments = await getPostItemComments(id);
+  const id = Number(params.postId);
+  if (!Number.isInteger(id)) {
+    error(404, 'Post not found');
+  }
 
   return {
-    postItem,
-    // postItemComments,
+    postItem: await getPostItem(id),
   };
 };
