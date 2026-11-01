@@ -13,15 +13,15 @@
 
   let todosList = $state(data.todos);
   let fetchingTodos = $state<boolean>(false);
-  let isEditing = $state<boolean>(false);
 
   async function refresh() {
     try {
       fetchingTodos = true;
       todosList = await getTodos();
-      fetchingTodos = false;
     } catch (error) {
       console.error(error);
+    } finally {
+      fetchingTodos = false;
     }
   }
 
@@ -31,7 +31,6 @@
       completed: checkbox.checked,
     };
     try {
-      console.log({ id, payload });
       await updateTodo(id, payload);
     } catch (error) {
       console.error(error);
@@ -67,7 +66,7 @@
         task: task,
       };
       await createTodo(taskPayload);
-      refresh();
+      await refresh();
       newTodoTask = '';
       showNewTodoInput = false;
     } catch (error) {
@@ -102,7 +101,6 @@
             {completeToggle}
             {removeTodo}
             {editTodo}
-            {isEditing}
             onEditDone={refresh}
           />
         {/each}

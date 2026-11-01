@@ -4,7 +4,7 @@ import { api } from './client';
 
 const endPoints = {
   users: () => `users/`,
-  userItem: (userId: number) => `users/${userId}`,
+  userItem: (userId: User['userId']) => `users/${userId}`,
 };
 
 /**
@@ -17,29 +17,29 @@ export function getUsers(): Promise<Array<User>> {
 
 /**
  * Retrieve a single user
- * @param userId The unique identifier of the user
+ * @param userId The user's UUID (`userId`, not `id`)
  * @returns Promise containing the user object
  */
-export function getUserItem(userId: number): Promise<User> {
+export function getUserItem(userId: User['userId']): Promise<User> {
   return api.get(endPoints.userItem(userId)).json();
 }
 
 /**
  * Delete a single user
- * @param userId The unique identifier of the user
- * @returns Promise resolving to a …?
+ * @param userId The user's UUID (`userId`, not `id`)
+ * @returns Promise resolving when the API responds with 204 No Content
  */
-export function deleteUserItem(userId: number): Promise<User> {
-  return api.delete(endPoints.userItem(userId)).json();
+export async function deleteUserItem(userId: User['userId']): Promise<void> {
+  await api.delete(endPoints.userItem(userId));
 }
 
 /**
  * Update a single user
- * @param userId The unique identifier of the user
+ * @param userId The user's UUID (`userId`, not `id`)
  * @param user The user update payload
  * @returns Promise containing the updated user
  */
-export function updateUser(userId: number, user: UserUpdate): Promise<User> {
+export function updateUser(userId: User['userId'], user: UserUpdate): Promise<User> {
   return api.put(endPoints.userItem(userId), { json: user }).json();
 }
 
