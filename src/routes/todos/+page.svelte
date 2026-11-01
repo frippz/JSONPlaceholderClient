@@ -1,8 +1,8 @@
 <script lang="ts">
   import TodoList from '$lib/components/todos/TodoList.svelte';
-  import type { PageData } from './$types';
+  import type { PageProps } from './$types';
 
-  export let data: PageData;
+  let { data }: PageProps = $props();
 </script>
 
 <TodoList {data} />

@@ -2,16 +2,17 @@
   import type { TodoItem } from '$types/todos';
 
   interface Props {
+    id: TodoItem['id'];
     task: TodoItem['task'];
     completed: TodoItem['completed'];
     onchange: (event: Event) => void;
   }
 
-  let { task, completed, onchange }: Props = $props();
+  let { id, task, completed, onchange }: Props = $props();
 </script>
 
 <label>
-  <input type="checkbox" name={task} checked={completed} {onchange} />
+  <input type="checkbox" name="completed" value={id} checked={completed} {onchange} />
   <span>{task}</span>
 </label>
 

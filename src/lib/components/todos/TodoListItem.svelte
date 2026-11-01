@@ -10,46 +10,42 @@
   interface Props extends TodoItem {
     completeToggle: (event: Event, id: TodoItem['id']) => void;
     removeTodo: (id: TodoItem['id']) => void;
-    editTodo: (id: TodoItem['id'], todo: TodoItem['task']) => void;
+    editTodo: (id: TodoItem['id'], todo: TodoItem['task']) => Promise<void>;
     onEditDone: () => void;
-    isEditing: boolean;
   }
 
-  let {
-    id,
-    task,
-    completed,
-    completeToggle,
-    removeTodo,
-    editTodo,
-    isEditing = false,
-    onEditDone,
-  }: Props = $props();
+  let { id, task, completed, completeToggle, removeTodo, editTodo, onEditDone }: Props = $props();
 
-  let updatedTask = $state<string>(task);
+  let isEditing = $state(false);
+  let updatedTask = $state('');
 
   function startEditing() {
     updatedTask = task;
     isEditing = true;
   }
 
-  function handleEdit() {
+  async function handleEdit() {
     if (updatedTask.trim()) {
-      editTodo(id, updatedTask);
+      await editTodo(id, updatedTask.trim());
     }
     onEditDone();
     isEditing = false;
   }
 </script>
 
-<li id="todo-${id}" transition:fade>
+<li id="todo-{id}" transition:fade>
   {#if !isEditing}
-    <TodoItemCheckbox {task} {completed} onchange={(e) => completeToggle(e, id)} />
+    <TodoItemCheckbox {id} {task} {completed} onchange={(e) => completeToggle(e, id)} />
   {:else}
     <input
       type="text"
       bind:value={updatedTask}
-      onkeydown={(e) => e.key === 'Enter' && handleEdit()}
+      onkeydown={(e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          handleEdit();
+        }
+      }}
     />
   {/if}
   <input type="hidden" name="id" value={id} />

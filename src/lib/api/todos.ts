@@ -19,7 +19,7 @@ export function getTodos(): Promise<Array<TodoItem>> {
 /**
  * Retrieve a single TODO item
  * @param todoItem The unique identifier of the TODO
- * @returns Promise containing the TODOs array
+ * @returns Promise containing the TODO item
  */
 export function getTodoItem(todoItem: number): Promise<TodoItem> {
   return api.get(endPoints.todoItem(todoItem)).json();
@@ -28,16 +28,16 @@ export function getTodoItem(todoItem: number): Promise<TodoItem> {
 /**
  * Delete a single TODO item
  * @param todoItem The unique identifier of the TODO
- * @returns Promise resolving to a …?
+ * @returns Promise resolving when the API responds with 204 No Content
  */
-export function deleteTodoItem(todoItem: number): Promise<TodoItem> {
-  return api.delete(endPoints.todoItem(todoItem)).json();
+export async function deleteTodoItem(todoItem: number): Promise<void> {
+  await api.delete(endPoints.todoItem(todoItem));
 }
 
 /**
  * Update a single TODO item
  * @param todoItem The unique identifier of the TODO
- * @returns Promise containing the TODOs array
+ * @returns Promise containing the updated TODO item
  */
 export function updateTodo(todoItem: number, todo: TodoItemUpdate): Promise<TodoItem> {
   return api.put(endPoints.todoItem(todoItem), { json: todo }).json();
