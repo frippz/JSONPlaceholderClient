@@ -11,7 +11,7 @@
 
   let { data }: { data: { todos: TodoItem[] } } = $props();
 
-  let todosList = $state(data.todos);
+  let todosList = $derived(data.todos);
   let fetchingTodos = $state<boolean>(false);
 
   async function refresh() {
